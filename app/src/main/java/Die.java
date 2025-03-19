@@ -14,5 +14,7 @@ public class Die
         side = random.nextInt(6)+1;
     }
 
-
+    public int getSide() {
+        return side;
+    }
 }

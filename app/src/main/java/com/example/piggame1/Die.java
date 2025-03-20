@@ -1,3 +1,5 @@
+package com.example.piggame1;
+
 import java.util.Random;
 
 public class Die

@@ -1,6 +1,7 @@
 package com.example.piggame1;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,10 @@ import java.util.concurrent.TimeUnit;
 
 public class GameScreen extends AppCompatActivity {
 
+    TextView die1;
+    TextView die2;
+    Button rollBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +30,10 @@ public class GameScreen extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        die1 = findViewById(R.id.die1);
+        die2 = findViewById(R.id.die2);
+        rollBtn = findViewById(R.id.RollButton);
     }
 
     public void rollDice()

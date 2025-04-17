@@ -1,6 +1,8 @@
 package com.example.piggame1;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,8 +18,8 @@ import java.util.concurrent.TimeUnit;
 
 public class GameScreen extends AppCompatActivity {
 
-    TextView die1;
-    TextView die2;
+    TextView dice1;
+    TextView dice2;
     Button rollBtn;
 
     @Override
@@ -31,29 +33,35 @@ public class GameScreen extends AppCompatActivity {
             return insets;
         });
 
-        die1 = findViewById(R.id.die1);
-        die2 = findViewById(R.id.die2);
+        dice1 = findViewById(R.id.die1);
+        dice2 = findViewById(R.id.die2);
         rollBtn = findViewById(R.id.RollButton);
+
+        rollBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rollDice();
+            }
+        });
     }
 
+    @SuppressLint("SetTextI18n")
     public void rollDice()
     {
-        TextView die1 = findViewById(R.id.die1);
-        TextView die2 = findViewById(R.id.die2);
-
         Random rn = new Random();
 
-        for(int i = 0; i < 7 + (rn.nextInt(10)) ; i++)
+        for (int i = 0; i < 15; i++)
         {
-
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    die1.setText(rn.nextInt(6)+1);
-                    die2.setText(rn.nextInt(6)+1);
+                    //Do something after 1s
+                    dice1.setText("" + (rn.nextInt(6) + 1));
+                    dice2.setText("" + (rn.nextInt(6) + 1));
                 }
-            }, 163);
+            }, 50 * (2 * i +1));
         }
-    }
+    }//end roll dice
+
 }

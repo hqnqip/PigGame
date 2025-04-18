@@ -49,18 +49,20 @@ public class GameScreen extends AppCompatActivity {
     public void rollDice()
     {
         Random rn = new Random();
-
-        for (int i = 0; i < 15; i++)
-        {
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    //Do something after 1s
-                    dice1.setText("" + (rn.nextInt(6) + 1));
-                    dice2.setText("" + (rn.nextInt(6) + 1));
-                }
-            }, 50 * (2 * i +1));
+        if(rollBtn.isEnabled()) {
+            rollBtn.setEnabled(false);
+            for (int i = 0; i < 15; i++) {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Do something after 1s
+                        dice1.setText("" + (rn.nextInt(6) + 1));
+                        dice2.setText("" + (rn.nextInt(6) + 1));
+                    }
+                }, 50 * (2 * i + 1));
+            }
+            rollBtn.setEnabled(true);
         }
     }//end roll dice
 

@@ -46,6 +46,7 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 rollDice();
+                rollBtn.setEnabled(true);
             }
         });
     }
@@ -54,10 +55,9 @@ public class GameScreen extends AppCompatActivity {
     public void rollDice()
     {
         Random rn = new Random();
-        if(rollBtn.isEnabled()) {
-            rollBtn.setEnabled(false);
             for (int i = 0; i < 15; i++) {
                 final Handler handler = new Handler();
+                int finalI = i;
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -66,11 +66,15 @@ public class GameScreen extends AppCompatActivity {
                         //dice2.setText("" + (rn.nextInt(6) + 1));
                         dice1.setImageResource(getDieImage(rn.nextInt(6) + 1));
                         dice2.setImageResource(getDieImage(rn.nextInt(6) + 1));
+                        rollBtn.setEnabled(false);
+                        if(finalI == 14)
+                        {
+                            rollBtn.setEnabled(true);
+                        }
                     }
                 }, 50 * (2 * i + 1));
             }
-            rollBtn.setEnabled(true);
-        }
+
     }//end roll dice
 
     public int getDieImage(int n)

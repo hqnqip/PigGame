@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -18,8 +19,8 @@ import java.util.concurrent.TimeUnit;
 
 public class GameScreen extends AppCompatActivity {
 
-    TextView dice1;
-    TextView dice2;
+    ImageView dice1;
+    ImageView dice2;
     Button rollBtn;
 
     @Override
@@ -57,8 +58,8 @@ public class GameScreen extends AppCompatActivity {
                     @Override
                     public void run() {
                         //Do something after 1s
-                        dice1.setText("" + (rn.nextInt(6) + 1));
-                        dice2.setText("" + (rn.nextInt(6) + 1));
+                        //dice1.setText("" + (rn.nextInt(6) + 1));
+                        //dice2.setText("" + (rn.nextInt(6) + 1));
                     }
                 }, 50 * (2 * i + 1));
             }
@@ -66,4 +67,28 @@ public class GameScreen extends AppCompatActivity {
         }
     }//end roll dice
 
+    public int getDieImage(int n)
+    {
+        if (n == 1)
+        {
+            return R.drawable.one;
+        }
+        else if(n == 2)
+        {
+            return R.drawable.two;
+        }
+        else if(n == 3)
+        {
+            return R.drawable.three;
+        }
+        else if(n == 4)
+        {
+            return R.drawable.four;
+        }
+        else if(n == 5)
+        {
+            return R.drawable.five;
+        }
+        return R.drawable.six;
+    }
 }

@@ -38,6 +38,10 @@ public class GameScreen extends AppCompatActivity {
         dice2 = findViewById(R.id.die2);
         rollBtn = findViewById(R.id.RollButton);
 
+        Random r = new Random();
+        dice1.setImageResource(getDieImage(r.nextInt(6) + 1));
+        dice2.setImageResource(getDieImage(r.nextInt(6) + 1));
+
         rollBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +64,8 @@ public class GameScreen extends AppCompatActivity {
                         //Do something after 1s
                         //dice1.setText("" + (rn.nextInt(6) + 1));
                         //dice2.setText("" + (rn.nextInt(6) + 1));
+                        dice1.setImageResource(getDieImage(rn.nextInt(6) + 1));
+                        dice2.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     }
                 }, 50 * (2 * i + 1));
             }

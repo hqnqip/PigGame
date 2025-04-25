@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fae3eb"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".DuoPlayer">
+
+    <TextView
+        android:id="@+id/textPlayer"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="#854f4a"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Player 1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginVertical="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/diceSum"
+            android:layout_width="75dp"
+            android:layout_height="45dp"
+            android:background="#ed6190"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="#"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/scoreTotal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="#854f4a"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Total: ___" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonRoll"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#ed6190"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:text="Roll Dice" />
+
+        <Button
+            android:id="@+id/buttonEnd"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#ed6190"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:text="End Turn" />
+    </LinearLayout>
+
+</LinearLayout>

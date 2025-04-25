@@ -1,19 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#fae3eb"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/titleOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="#ed6190"
+        android:textStyle="bold"
+        android:text="Two Rolls in Mud:" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/titleTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:gravity="center|bottom"
+        android:textColor="#ed6190"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        android:text="P I G"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        app:shapeAppearanceOverlay="@style/Circular"
+        android:id="@+id/imageOne"
+        android:layout_width="250sp"
+        android:layout_height="250sp"
+        android:layout_marginBottom="15sp"
+        android:background="@drawable/pig"
+        android:padding="2sp"/>
+    <!--app:strokeWidth="4dp"-->
+    <!--app:strokeColor="#854f4a"-->
+    <!--android:background="#ed6190"-->
+
+    <Button
+        android:id="@+id/buttonPlaySingle"
+        android:layout_width="250dp"
+        android:layout_marginBottom="10sp"
+        android:backgroundTint="#fc9fc0"
+        android:textColor="#854f4a"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Single Player" />
+
+    <Button
+        android:id="@+id/buttonPlayDuo"
+        android:layout_width="250dp"
+        android:layout_marginBottom="10sp"
+        android:backgroundTint="#fc9fc0"
+        android:textColor="#854f4a"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="Duo Players" />
+
+    <Button
+        android:id="@+id/buttonHowTo"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:backgroundTint="#fc9fc0"
+        android:textColor="#854f4a"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="How to Play"/>
+
+</LinearLayout>

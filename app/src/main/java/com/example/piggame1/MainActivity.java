@@ -47,5 +47,16 @@ public class MainActivity extends AppCompatActivity {
                 //^ Activates the connection.
             }
         });
+
+        //Event Handler
+        duoPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DuoPlayer.class);
+                //^ Draws a connection from one page to another.
+                startActivity(intent);
+                //^ Activates the connection.
+            }
+        });
     }
 }

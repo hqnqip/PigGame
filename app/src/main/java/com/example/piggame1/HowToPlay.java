@@ -11,48 +11,30 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class HowToPlay extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_how_to_play);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Die d = new Die();
-        d.roll();
-        System.out.println(d.getSide());
-
-        //MAIN MENU BUTTONS:
         //Initiates variable.
-        Button howTo;
-        Button duoPlayer;
+        Button back;
 
         //Connects variable to a specific element.
-        howTo = (Button)findViewById(R.id.buttonHowTo);
-        duoPlayer = (Button)findViewById(R.id.buttonPlayDuo);
+        back = (Button)findViewById(R.id.buttonBack);
 
         //Event Handler
-        howTo.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HowToPlay.class);
-                //^ Draws a connection from one page to another.
-                startActivity(intent);
-                //^ Activates the connection.
-            }
-        });
-
-        //Event Handler
-        duoPlayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DuoPlayer.class);
+                Intent intent = new Intent(HowToPlay.this, MainActivity.class);
                 //^ Draws a connection from one page to another.
                 startActivity(intent);
                 //^ Activates the connection.

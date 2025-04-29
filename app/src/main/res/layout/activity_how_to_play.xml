@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fae3eb"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".HowToPlay">
+
+
+    <TextView
+        android:id="@+id/textHowTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="#ed6190"
+        android:textStyle="bold"
+        android:text="How to Play" />
+
+    <TextView
+        android:id="@+id/textParagraph"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColor="#854f4a"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingVertical="22dp"
+        android:text="Each player must roll two dice. Add the dice's sum to their total score and repeat until at least a (1) is rolled.\n\nIf both dice are rolled a (1), the total score is reset back to 0." />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ed6190"
+        android:text="Back" />
+
+</LinearLayout>

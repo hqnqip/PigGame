@@ -32,6 +32,7 @@ public class DuoPlayer extends AppCompatActivity {
             return insets;
         });
 
+        //Attempt at Making Workable Slide-Line.
         end = findViewById(R.id.buttonEnd);
         slideBar = findViewById(R.id.slideBar);
         isLeft = true;

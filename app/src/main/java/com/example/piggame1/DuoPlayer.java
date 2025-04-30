@@ -21,6 +21,7 @@ public class DuoPlayer extends AppCompatActivity {
     TextView slideBar;
     boolean isLeft;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

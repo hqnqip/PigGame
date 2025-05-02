@@ -85,6 +85,7 @@ public class DuoPlayer extends AppCompatActivity {
                     //Do something after 1s
                     //dice1.setText("" + (rn.nextInt(6) + 1));
                     //dice2.setText("" + (rn.nextInt(6) + 1));
+                    //done
                     dice1.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     dice2.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     rollBtn.setEnabled(false);

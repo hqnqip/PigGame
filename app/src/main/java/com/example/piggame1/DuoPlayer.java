@@ -23,11 +23,11 @@ import java.util.Random;
 public class DuoPlayer extends AppCompatActivity {
 
     Button end;
-    TextView slideBar;
-    boolean isLeft;
     ImageView dice1;
     ImageView dice2;
     Button rollBtn;
+    LinearLayout slideBar;
+    int playerTurn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,19 +57,21 @@ public class DuoPlayer extends AppCompatActivity {
             }
         });
 
-        //Attempt at Making Workable Slide-Line.
-        end = findViewById(R.id.buttonEnd);
-        slideBar = findViewById(R.id.slideBar);
-        isLeft = true;
+        slideBar = findViewById(R.id.slideBox);
+        playerTurn = 1;
+    }
 
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) slideBar.getLayoutParams();
-
-        end.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                params.gravity = Gravity.END;
-            }
-        });
+    public void endTurn(View v)
+    {
+        if (playerTurn == 1)
+        {
+            slideBar.setGravity(Gravity.END);
+            playerTurn = 2;
+        }
+        else {
+            slideBar.setGravity(Gravity.START);
+            playerTurn = 1;
+        }
     }
 
     @SuppressLint("SetTextI18n")

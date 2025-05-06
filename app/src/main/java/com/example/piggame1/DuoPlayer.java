@@ -33,6 +33,8 @@ public class DuoPlayer extends AppCompatActivity {
     ImageView dice2;
     Button rollBtn;
 
+    Die d3 = new Die();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +123,7 @@ public class DuoPlayer extends AppCompatActivity {
                     //dice1.setText("" + (rn.nextInt(6) + 1));
                     //dice2.setText("" + (rn.nextInt(6) + 1));
                     //done
+
                     dice1.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     dice2.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     rollBtn.setEnabled(false);

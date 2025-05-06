@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,11 +24,14 @@ import java.util.Random;
 
 public class DuoPlayer extends AppCompatActivity {
 
-    Button end;
+
+    //LinearLayout slideBar;
+    TextView slideBar;
+    int playerTurn;
+    Button endButton;
     ImageView dice1;
     ImageView dice2;
     Button rollBtn;
-    LinearLayout slideBar;
     int playerTurn;
 
     @Override
@@ -39,6 +44,44 @@ public class DuoPlayer extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //Attempt at Making Workable Slide-Line.
+        //slideBar = findViewById(R.id.slideBox);
+        slideBar = findViewById(R.id.slideBar);
+        endButton = findViewById(R.id.buttonEnd);
+        playerTurn = 1;
+
+        endButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                if (playerTurn == 1) {
+                    Animation slideRight = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_right);
+                    slideBar.startAnimation(slideRight);
+                    playerTurn = 2;
+                }
+                else {
+                    Animation slideLeft = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_left);
+                    slideBar.startAnimation(slideLeft);
+                    playerTurn = 1;
+                }
+            }
+        });
+    }//L
+
+    /*
+    public void endTurn(View v)
+    {
+        if (playerTurn == 1)
+        {
+            slideBar.setGravity(Gravity.END);
+            playerTurn = 2;
+        }
+        else {
+            slideBar.setGravity(Gravity.START);
+            playerTurn = 1;
+        }
+    }
+    */
 
         dice1 = findViewById(R.id.die1);
         dice2 = findViewById(R.id.die2);
@@ -127,5 +170,4 @@ public class DuoPlayer extends AppCompatActivity {
         }
         return R.drawable.six;
     }
-
 }

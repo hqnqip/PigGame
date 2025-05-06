@@ -56,7 +56,7 @@ public class DuoPlayer extends AppCompatActivity {
                 }
             }
         });
-    }
+    }//L
 
     /*
     public void endTurn(View v)

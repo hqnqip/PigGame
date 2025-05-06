@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,9 +19,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class DuoPlayer extends AppCompatActivity {
 
-    Button end;
+    //LinearLayout slideBar;
     TextView slideBar;
-    boolean isLeft;
+    int playerTurn;
+    Button endButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +36,40 @@ public class DuoPlayer extends AppCompatActivity {
         });
 
         //Attempt at Making Workable Slide-Line.
-        end = findViewById(R.id.buttonEnd);
+        //slideBar = findViewById(R.id.slideBox);
         slideBar = findViewById(R.id.slideBar);
-        isLeft = true;
+        endButton = findViewById(R.id.buttonEnd);
+        playerTurn = 1;
 
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) slideBar.getLayoutParams();
-
-        end.setOnClickListener(new View.OnClickListener() {
+        endButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                params.gravity = Gravity.END;
+            public void onClick (View view) {
+                if (playerTurn == 1) {
+                    Animation slideRight = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_right);
+                    slideBar.startAnimation(slideRight);
+                    playerTurn = 2;
+                }
+                else {
+                    Animation slideLeft = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_left);
+                    slideBar.startAnimation(slideLeft);
+                    playerTurn = 1;
+                }
             }
         });
     }
+
+    /*
+    public void endTurn(View v)
+    {
+        if (playerTurn == 1)
+        {
+            slideBar.setGravity(Gravity.END);
+            playerTurn = 2;
+        }
+        else {
+            slideBar.setGravity(Gravity.START);
+            playerTurn = 1;
+        }
+    }
+    */
 }

@@ -94,21 +94,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:orientation="vertical"
-        android:background="@color/white"
         android:layout_marginVertical="20dp"
-        android:gravity="center">
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/diceSum"
-            android:layout_width="75dp"
-            android:layout_height="45dp"
-            android:background="#ed6190"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:text="#"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5">
+
+            <ImageView
+                android:id="@+id/die1"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:contentDescription="dice 1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/die2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                tools:ignore="HardcodedText"
+                tools:srcCompat="@drawable/six" />
+
+            <ImageView
+                android:id="@+id/die2"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:contentDescription="dice 2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/die1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                tools:ignore="HardcodedText"
+                tools:srcCompat="@drawable/six" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 
     <TextView
@@ -135,7 +162,7 @@
             android:backgroundTint="#ed6190"
             android:textStyle="bold"
             android:layout_weight="1"
-            android:text="Roll Dice" />
+            android:text="Roll Dice"/>
 
         <Button
             android:id="@+id/buttonEnd"
@@ -146,7 +173,8 @@
             android:backgroundTint="#ed6190"
             android:textStyle="bold"
             android:layout_weight="1"
-            android:text="End Turn" />
+            android:onClick="endTurn"
+            android:text="End Turn"/>
     </LinearLayout>
 
 </LinearLayout>

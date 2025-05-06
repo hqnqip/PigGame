@@ -44,6 +44,13 @@ public class DuoPlayer extends AppCompatActivity {
             return insets;
         });
 
+        //make 2 die objects to more easily look at the side the animated die land on
+        Die d1 = new Die();
+        d1.roll();
+
+        Die d2 = new Die();
+        d2.roll();
+
         //Attempt at Making Workable Slide-Line.
         //slideBar = findViewById(R.id.slideBox);
         slideBar = findViewById(R.id.slideBar);

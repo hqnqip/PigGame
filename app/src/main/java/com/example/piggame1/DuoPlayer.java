@@ -32,7 +32,6 @@ public class DuoPlayer extends AppCompatActivity {
     ImageView dice1;
     ImageView dice2;
     Button rollBtn;
-    int playerTurn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,22 +65,6 @@ public class DuoPlayer extends AppCompatActivity {
                 }
             }
         });
-    }//L
-
-    /*
-    public void endTurn(View v)
-    {
-        if (playerTurn == 1)
-        {
-            slideBar.setGravity(Gravity.END);
-            playerTurn = 2;
-        }
-        else {
-            slideBar.setGravity(Gravity.START);
-            playerTurn = 1;
-        }
-    }
-    */
 
         dice1 = findViewById(R.id.die1);
         dice2 = findViewById(R.id.die2);
@@ -96,11 +79,11 @@ public class DuoPlayer extends AppCompatActivity {
             public void onClick(View view) {
                 rollDice();
                 rollBtn.setEnabled(true);
-                end.setEnabled(true);
+                endButton.setEnabled(true);
             }
         });
 
-        slideBar = findViewById(R.id.slideBox);
+        slideBar = findViewById(R.id.slideBar);
         playerTurn = 1;
     }
 
@@ -134,11 +117,11 @@ public class DuoPlayer extends AppCompatActivity {
                     dice1.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     dice2.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     rollBtn.setEnabled(false);
-                    end.setEnabled(false);
+                    endButton.setEnabled(false);
                     if(finalI == 14)
                     {
                         rollBtn.setEnabled(true);
-                        end.setEnabled(true);
+                        endButton.setEnabled(true);
                     }
                 }
             }, 50 * (2 * i + 1));

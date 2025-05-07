@@ -23,8 +23,6 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Random;
 
 public class DuoPlayer extends AppCompatActivity {
-
-
     //LinearLayout slideBar;
     TextView slideBar;
     int playerTurn;

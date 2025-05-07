@@ -34,6 +34,8 @@ public class DuoPlayer extends AppCompatActivity {
     Button rollBtn;
     int points1 = 0;
     int points2 = 0;
+    TextView player1;
+    TextView player2;
 
     //make 2 die objects to more easily look at the side the animated die land on
     Die d1 = new Die();
@@ -72,6 +74,9 @@ public class DuoPlayer extends AppCompatActivity {
                 }
             }
         });
+
+        player1 = findViewById(R.id.textPlayer1);
+        player2 = findViewById(R.id.textPlayer2);
 
         dice1 = findViewById(R.id.die1);
         dice2 = findViewById(R.id.die2);
@@ -142,6 +147,9 @@ public class DuoPlayer extends AppCompatActivity {
                         else
                         {
                             if(playerTurn == 1)
+                            {
+
+                            }
                         }
                         rollBtn.setEnabled(true);
                         endButton.setEnabled(true);

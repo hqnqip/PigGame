@@ -32,7 +32,6 @@ public class DuoPlayer extends AppCompatActivity {
     ImageView dice1;
     ImageView dice2;
     Button rollBtn;
-    int playerTurn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,35 +52,18 @@ public class DuoPlayer extends AppCompatActivity {
 
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view) {
+            public void onClick(View view) {
                 if (playerTurn == 1) {
                     Animation slideRight = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_right);
                     slideBar.startAnimation(slideRight);
                     playerTurn = 2;
-                }
-                else {
+                } else {
                     Animation slideLeft = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_left);
                     slideBar.startAnimation(slideLeft);
                     playerTurn = 1;
                 }
             }
         });
-    }//L
-
-    /*
-    public void endTurn(View v)
-    {
-        if (playerTurn == 1)
-        {
-            slideBar.setGravity(Gravity.END);
-            playerTurn = 2;
-        }
-        else {
-            slideBar.setGravity(Gravity.START);
-            playerTurn = 1;
-        }
-    }
-    */
 
         dice1 = findViewById(R.id.die1);
         dice2 = findViewById(R.id.die2);
@@ -96,30 +78,27 @@ public class DuoPlayer extends AppCompatActivity {
             public void onClick(View view) {
                 rollDice();
                 rollBtn.setEnabled(true);
-                end.setEnabled(true);
+                endButton.setEnabled(true);
             }
         });
 
-        slideBar = findViewById(R.id.slideBox);
+        slideBar = findViewById(R.id.slideBar);
         playerTurn = 1;
     }
 
-    public void endTurn(View v)
-    {
-        if (playerTurn == 1)
-        {
+
+    public void endTurn(View v) {
+        if (playerTurn == 1) {
             slideBar.setGravity(Gravity.END);
             playerTurn = 2;
-        }
-        else {
+        } else {
             slideBar.setGravity(Gravity.START);
             playerTurn = 1;
         }
     }
 
     @SuppressLint("SetTextI18n")
-    public void rollDice()
-    {
+    public void rollDice() {
         Random rn = new Random();
         for (int i = 0; i < 15; i++) {
             final Handler handler = new Handler();
@@ -134,11 +113,10 @@ public class DuoPlayer extends AppCompatActivity {
                     dice1.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     dice2.setImageResource(getDieImage(rn.nextInt(6) + 1));
                     rollBtn.setEnabled(false);
-                    end.setEnabled(false);
-                    if(finalI == 14)
-                    {
+                    endButton.setEnabled(false);
+                    if (finalI == 14) {
                         rollBtn.setEnabled(true);
-                        end.setEnabled(true);
+                        endButton.setEnabled(true);
                     }
                 }
             }, 50 * (2 * i + 1));
@@ -146,26 +124,16 @@ public class DuoPlayer extends AppCompatActivity {
 
     }//end roll dice
 
-    public int getDieImage(int n)
-    {
-        if (n == 1)
-        {
+    public int getDieImage(int n) {
+        if (n == 1) {
             return R.drawable.one;
-        }
-        else if(n == 2)
-        {
+        } else if (n == 2) {
             return R.drawable.two;
-        }
-        else if(n == 3)
-        {
+        } else if (n == 3) {
             return R.drawable.three;
-        }
-        else if(n == 4)
-        {
+        } else if (n == 4) {
             return R.drawable.four;
-        }
-        else if(n == 5)
-        {
+        } else if (n == 5) {
             return R.drawable.five;
         }
         return R.drawable.six;

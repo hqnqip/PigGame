@@ -30,17 +30,16 @@ public class SplashScreen extends AppCompatActivity {
             return insets;
         });
 
+        pigImage = findViewById(R.id.pigLoadingImage);
+        pigImage.startAnimation(AnimationUtils.loadAnimation(SplashScreen.this, R.anim.spin));
 
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Animation spin = AnimationUtils.loadAnimation(SplashScreen.this, R.anim.spin);
-//                pigImage.startAnimation(spin);
-//                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        }, 3000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 2000);
     }
 }

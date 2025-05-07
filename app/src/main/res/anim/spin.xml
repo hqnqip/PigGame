@@ -6,7 +6,7 @@
         android:fromDegrees="0"
         android:toDegrees="720"
         android:duration="1000"
-        android:startOffset="0"
+        android:startOffset="1000"
         android:pivotX="50%"
         android:pivotY="50%"/>
 </set>

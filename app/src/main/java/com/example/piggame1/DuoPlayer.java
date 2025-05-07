@@ -32,6 +32,8 @@ public class DuoPlayer extends AppCompatActivity {
     ImageView dice1;
     ImageView dice2;
     Button rollBtn;
+    int points1 = 0;
+    int points2 = 0;
 
     //make 2 die objects to more easily look at the side the animated die land on
     Die d1 = new Die();
@@ -121,11 +123,14 @@ public class DuoPlayer extends AppCompatActivity {
                     //dice1.setText("" + (rn.nextInt(6) + 1));
                     //dice2.setText("" + (rn.nextInt(6) + 1));
                     //done
+
+                    //change image of the dice
                     d1.setSide(rn.nextInt(6) + 1);
                     d2.setSide(rn.nextInt(6) + 1);
-
                     dice1.setImageResource(getDieImage(d1.getSide()));
                     dice2.setImageResource(getDieImage(d2.getSide()));
+
+                    //make it so that buttons cannot be pressed during a roll
                     rollBtn.setEnabled(false);
                     endButton.setEnabled(false);
                     if(finalI == 14)
@@ -134,8 +139,14 @@ public class DuoPlayer extends AppCompatActivity {
                         {
                             endTurn();
                         }
+                        else
+                        {
+                            if(playerTurn == 1)
+                        }
                         rollBtn.setEnabled(true);
                         endButton.setEnabled(true);
+                        //add score here
+
                     }
                 }
             }, 50 * (2 * i + 1));

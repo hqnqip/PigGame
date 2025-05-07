@@ -19,4 +19,8 @@ public class Die
     public int getSide() {
         return side;
     }
+
+    public void setSide(int s) {
+        side = s;
+    }
 }

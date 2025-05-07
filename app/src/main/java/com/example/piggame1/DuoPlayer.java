@@ -33,6 +33,10 @@ public class DuoPlayer extends AppCompatActivity {
     ImageView dice2;
     Button rollBtn;
 
+    //make 2 die objects to more easily look at the side the animated die land on
+    Die d1 = new Die();
+    Die d2 = new Die();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,7 @@ public class DuoPlayer extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
 
         //Attempt at Making Workable Slide-Line.
         //slideBar = findViewById(R.id.slideBox);
@@ -80,6 +85,7 @@ public class DuoPlayer extends AppCompatActivity {
                 rollDice();
                 rollBtn.setEnabled(true);
                 endButton.setEnabled(true);
+
             }
         });
 
@@ -87,15 +93,16 @@ public class DuoPlayer extends AppCompatActivity {
         playerTurn = 1;
     }
 
-    public void endTurn(View v)
+    public void endTurn()
     {
-        if (playerTurn == 1)
-        {
-            slideBar.setGravity(Gravity.END);
+        if (playerTurn == 1) {
+            Animation slideRight = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_right);
+            slideBar.startAnimation(slideRight);
             playerTurn = 2;
         }
         else {
-            slideBar.setGravity(Gravity.START);
+            Animation slideLeft = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_left);
+            slideBar.startAnimation(slideLeft);
             playerTurn = 1;
         }
     }
@@ -114,12 +121,19 @@ public class DuoPlayer extends AppCompatActivity {
                     //dice1.setText("" + (rn.nextInt(6) + 1));
                     //dice2.setText("" + (rn.nextInt(6) + 1));
                     //done
-                    dice1.setImageResource(getDieImage(rn.nextInt(6) + 1));
-                    dice2.setImageResource(getDieImage(rn.nextInt(6) + 1));
+                    d1.setSide(rn.nextInt(6) + 1);
+                    d2.setSide(rn.nextInt(6) + 1);
+
+                    dice1.setImageResource(getDieImage(d1.getSide()));
+                    dice2.setImageResource(getDieImage(d2.getSide()));
                     rollBtn.setEnabled(false);
                     endButton.setEnabled(false);
                     if(finalI == 14)
                     {
+                        if(d1.getSide() == 1|| d2.getSide() == 1)
+                        {
+                            endTurn();
+                        }
                         rollBtn.setEnabled(true);
                         endButton.setEnabled(true);
                     }

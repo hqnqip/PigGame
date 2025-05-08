@@ -34,6 +34,8 @@ public class DuoPlayer extends AppCompatActivity {
     Button rollBtn;
     int points1 = 0;
     int points2 = 0;
+    int startingPoint = 0;
+    int rolls = 0;
     TextView player1;
     TextView player2;
 
@@ -75,8 +77,8 @@ public class DuoPlayer extends AppCompatActivity {
             }
         });
 
-        player1 = findViewById(R.id.textPlayer1);
-        player2 = findViewById(R.id.textPlayer2);
+        player1 = findViewById(R.id.textPlayer1Score);
+        player2 = findViewById(R.id.textPlayer2Score);
 
         dice1 = findViewById(R.id.die1);
         dice2 = findViewById(R.id.die2);
@@ -112,11 +114,24 @@ public class DuoPlayer extends AppCompatActivity {
             slideBar.startAnimation(slideLeft);
             playerTurn = 1;
         }
+        rolls = 0;
     }
 
     @SuppressLint("SetTextI18n")
     public void rollDice()
     {
+        if(rolls == 0)
+        {
+            System.out.println("Roll check" + rolls);
+            rolls++;
+            if(playerTurn == 1)
+            {
+                startingPoint = points1;
+                System.out.println(startingPoint);
+            }
+            else
+                startingPoint = points2;
+        }
         Random rn = new Random();
         for (int i = 0; i < 15; i++) {
             final Handler handler = new Handler();
@@ -128,6 +143,9 @@ public class DuoPlayer extends AppCompatActivity {
                     //dice1.setText("" + (rn.nextInt(6) + 1));
                     //dice2.setText("" + (rn.nextInt(6) + 1));
                     //done
+
+                    //store the player's score before adding
+
 
                     //change image of the dice
                     d1.setSide(rn.nextInt(6) + 1);
@@ -142,18 +160,58 @@ public class DuoPlayer extends AppCompatActivity {
                     {
                         if(d1.getSide() == 1|| d2.getSide() == 1)
                         {
-                            endTurn();
+                            if(d1.getSide() == 1 && d2.getSide() == 1)
+                            {
+
+                                if(playerTurn == 1)
+                                {
+                                    points1 = 0;
+                                    player1.setText("Score: " + points1);
+                                    startingPoint = 0;
+                                }
+                                else
+                                {
+                                    points2 = 0;
+                                    player2.setText("Score: " + points2);
+                                    startingPoint= 0;
+                                }
+                                endTurn();
+                                rolls = 0;
+                            }
+                            else
+                            {
+
+                                if(playerTurn == 1)
+                                {
+                                    player1.setText("Score: " + startingPoint);
+                                    points1= startingPoint;
+                                }
+                                else
+                                {
+                                    player2.setText("Score: " + startingPoint);
+                                    points2 = startingPoint;
+                                }
+                                endTurn();
+                                rolls = 0;
+                            }
+
                         }
                         else
                         {
                             if(playerTurn == 1)
                             {
-
+                                points1+= d1.getSide() + d2.getSide();
+                                player1.setText("Score: " + points1);
                             }
+                            else
+                            {
+                                points2+= d1.getSide() + d2.getSide();
+                                player2.setText("Score: " + points2);
+                            }
+                            System.out.println(startingPoint);
                         }
                         rollBtn.setEnabled(true);
                         endButton.setEnabled(true);
-                        //add score here
 
                     }
                 }

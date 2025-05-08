@@ -1,17 +1,14 @@
 package com.example.piggame1;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +28,9 @@ public class DuoPlayer extends AppCompatActivity {
     ImageView dice2;
     Button rollBtn;
 
+    MediaPlayer diceSFX;
+    MediaPlayer oink;
+
     //make 2 die objects to more easily look at the side the animated die land on
     Die d1 = new Die();
     Die d2 = new Die();
@@ -46,6 +46,8 @@ public class DuoPlayer extends AppCompatActivity {
             return insets;
         });
 
+        diceSFX = MediaPlayer.create(this, R.raw.dice_sfx);
+        oink = MediaPlayer.create(this, R.raw.pig_sfx);
 
         //Attempt at Making Workable Slide-Line.
         //slideBar = findViewById(R.id.slideBox);
@@ -56,6 +58,7 @@ public class DuoPlayer extends AppCompatActivity {
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                oink.start();
                 if (playerTurn == 1) {
                     Animation slideRight = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_right);
                     slideBar.startAnimation(slideRight);
@@ -80,10 +83,10 @@ public class DuoPlayer extends AppCompatActivity {
         rollBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                diceSFX.start();
                 rollDice();
                 rollBtn.setEnabled(true);
                 endButton.setEnabled(true);
-
             }
         });
 

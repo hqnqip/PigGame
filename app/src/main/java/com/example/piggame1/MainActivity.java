@@ -1,6 +1,7 @@
 package com.example.piggame1;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    MediaPlayer oink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        oink = MediaPlayer.create(this, R.raw.pig_sfx);
 
         Die d = new Die();
         d.roll();
@@ -41,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         howTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                oink.start();
                 Intent intent = new Intent(MainActivity.this, HowToPlay.class);
                 //^ Draws a connection from one page to another.
                 startActivity(intent);
@@ -52,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         duoPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                oink.start();
                 Intent intent = new Intent(MainActivity.this, DuoPlayer.class);
                 //^ Draws a connection from one page to another.
                 startActivity(intent);

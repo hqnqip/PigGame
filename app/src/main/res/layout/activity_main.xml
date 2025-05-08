@@ -18,7 +18,8 @@
         android:gravity="center"
         android:textColor="#ed6190"
         android:textStyle="bold"
-        android:text="Two Rolls in Mud:" />
+        android:text="Two Rolls in Mud:"
+        tools:ignore="HardcodedText"/>
 
     <TextView
         android:id="@+id/titleTwo"
@@ -28,30 +29,29 @@
         android:textColor="#ed6190"
         android:textSize="80sp"
         android:textStyle="bold"
-        android:text="P I G"/>
+        android:text="P I G"
+        tools:ignore="HardcodedText"/>
 
-    <com.google.android.material.imageview.ShapeableImageView
-        app:shapeAppearanceOverlay="@style/Circular"
+    <ImageView
         android:id="@+id/imageOne"
-        android:layout_width="250sp"
-        android:layout_height="250sp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginBottom="15sp"
         android:background="@drawable/pig"
-        android:padding="2sp"/>
-    <!--app:strokeWidth="4dp"-->
-    <!--app:strokeColor="#854f4a"-->
-    <!--android:background="#ed6190"-->
+        android:contentDescription="Logo"
+        android:padding="2sp"
+        tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/buttonPlaySingle"
-        android:layout_width="250dp"
-        android:layout_marginBottom="10sp"
-        android:backgroundTint="#fc9fc0"
-        android:textColor="#854f4a"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_height="wrap_content"
-        android:text="Single Player" />
+<!--    <Button-->
+<!--        android:id="@+id/buttonPlaySingle"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_marginBottom="10sp"-->
+<!--        android:backgroundTint="#fc9fc0"-->
+<!--        android:textColor="#854f4a"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Single Player" />-->
 
     <Button
         android:id="@+id/buttonPlayDuo"
@@ -62,7 +62,8 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_height="wrap_content"
-        android:text="Duo Players" />
+        android:text="Duo Players"
+        tools:ignore="HardcodedText"/>
 
     <Button
         android:id="@+id/buttonHowTo"
@@ -73,6 +74,7 @@
         android:textColor="#854f4a"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="How to Play"/>
+        android:text="How to Play"
+        tools:ignore="HardcodedText"/>
 
 </LinearLayout>

@@ -42,7 +42,8 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+                overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
+                //finish();
             }
         }, 1000);
     }

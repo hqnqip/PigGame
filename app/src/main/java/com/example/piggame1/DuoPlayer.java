@@ -66,11 +66,13 @@ public class DuoPlayer extends AppCompatActivity {
                     Animation slideRight = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_right);
                     slideBar.startAnimation(slideRight);
                     playerTurn = 2;
+                    rolls = 0;
                 }
                 else {
                     Animation slideLeft = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_left);
                     slideBar.startAnimation(slideLeft);
                     playerTurn = 1;
+                    rolls = 0;
                 }
             }
         });
@@ -92,6 +94,18 @@ public class DuoPlayer extends AppCompatActivity {
                 rollDice();
                 rollBtn.setEnabled(true);
                 endButton.setEnabled(true);
+
+                if(points1 >= 100 || points2 >= 100)
+                {
+                    if (playerTurn == 1)
+                    {
+                        Toast.makeText(DuoPlayer.this, "Player 1 WON!", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(DuoPlayer.this, "Player 2 WON!", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
             }
         });

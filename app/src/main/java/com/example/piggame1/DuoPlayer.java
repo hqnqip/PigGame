@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,10 +41,6 @@ public class DuoPlayer extends AppCompatActivity {
 
     MediaPlayer diceSFX;
     MediaPlayer oink;
-
-    //make 2 die objects to more easily look at the side the animated die land on
-    Die d1 = new Die();
-    Die d2 = new Die();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

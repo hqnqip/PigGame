@@ -19,6 +19,7 @@
         android:textSize="40sp"
         android:textColor="#ed6190"
         android:textStyle="bold"
+        android:fontFamily="@font/dyna_puff"
         android:text="How to Play" />
 
     <TextView
@@ -37,6 +38,8 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#ed6190"
+        android:fontFamily="@font/dyna_puff"
+        android:textSize="20dp"
         android:text="Back" />
 
 </LinearLayout>

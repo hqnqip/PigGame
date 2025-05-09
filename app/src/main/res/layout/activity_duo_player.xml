@@ -30,7 +30,8 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:text="Player 1" />
+                android:text="Player 1"
+                tools:ignore="HardcodedText"/>
 
             <TextView
                 android:id="@+id/textPlayer1Score"
@@ -40,7 +41,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:text="Score: 0" />
+                android:text="Score: 0"
+                tools:ignore="HardcodedText"/>
 
         </LinearLayout>
 
@@ -57,7 +59,8 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:text="Player 2" />
+                android:text="Player 2"
+                tools:ignore="HardcodedText"/>
 
             <TextView
                 android:id="@+id/textPlayer2Score"
@@ -67,7 +70,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:text="Score: 0" />
+                android:text="Score: 0"
+                tools:ignore="HardcodedText"/>
 
         </LinearLayout>
 
@@ -146,7 +150,8 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:text="Total: ___" />
+        android:text="Total: ___"
+        tools:ignore="HardcodedText"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -162,7 +167,9 @@
             android:backgroundTint="#ed6190"
             android:textStyle="bold"
             android:layout_weight="1"
-            android:text="Roll Dice"/>
+            android:textSize="18sp"
+            android:text="Roll Dice"
+            tools:ignore="HardcodedText"/>
 
         <Button
             android:id="@+id/buttonEnd"
@@ -173,8 +180,9 @@
             android:backgroundTint="#ed6190"
             android:textStyle="bold"
             android:layout_weight="1"
-            android:onClick="endTurn"
-            android:text="End Turn"/>
+            android:textSize="18sp"
+            android:text="End Turn"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 </LinearLayout>

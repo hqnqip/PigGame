@@ -1,17 +1,14 @@
 package com.example.piggame1;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -41,6 +38,13 @@ public class DuoPlayer extends AppCompatActivity {
     Die d1 = new Die();
     Die d2 = new Die();
 
+    MediaPlayer diceSFX;
+    MediaPlayer oink;
+
+    //make 2 die objects to more easily look at the side the animated die land on
+    Die d1 = new Die();
+    Die d2 = new Die();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +57,10 @@ public class DuoPlayer extends AppCompatActivity {
         });
 
 
+        diceSFX = MediaPlayer.create(this, R.raw.dice_sfx);
+        oink = MediaPlayer.create(this, R.raw.pig_sfx);
+
+
         //Attempt at Making Workable Slide-Line.
         //slideBar = findViewById(R.id.slideBox);
         slideBar = findViewById(R.id.slideBar);
@@ -62,6 +70,7 @@ public class DuoPlayer extends AppCompatActivity {
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                oink.start();
                 if (playerTurn == 1) {
                     Animation slideRight = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_right);
                     slideBar.startAnimation(slideRight);
@@ -91,6 +100,7 @@ public class DuoPlayer extends AppCompatActivity {
         rollBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                diceSFX.start();
                 rollDice();
                 rollBtn.setEnabled(true);
                 endButton.setEnabled(true);
@@ -156,6 +166,13 @@ public class DuoPlayer extends AppCompatActivity {
                     //dice2.setText("" + (rn.nextInt(6) + 1));
                     //done
 
+                    d1.setSide(rn.nextInt(6) + 1);
+                    d2.setSide(rn.nextInt(6) + 1);
+
+                    dice1.setImageResource(getDieImage(d1.getSide()));
+                    dice2.setImageResource(getDieImage(d2.getSide()));
+
+
                     //store the player's score before adding
 
 
@@ -166,12 +183,16 @@ public class DuoPlayer extends AppCompatActivity {
                     dice2.setImageResource(getDieImage(d2.getSide()));
 
                     //make it so that buttons cannot be pressed during a roll
+
                     rollBtn.setEnabled(false);
                     endButton.setEnabled(false);
                     if(finalI == 14)
                     {
                         if(d1.getSide() == 1|| d2.getSide() == 1)
                         {
+
+     
+
                             if(d1.getSide() == 1 && d2.getSide() == 1)
                             {
 

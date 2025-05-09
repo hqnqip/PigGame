@@ -123,7 +123,7 @@ public class DuoPlayer extends AppCompatActivity {
         if(rolls == 0)
         {
             System.out.println("Roll check" + rolls);
-            rolls++;
+            rolls = 1000;
             if(playerTurn == 1)
             {
                 startingPoint = points1;

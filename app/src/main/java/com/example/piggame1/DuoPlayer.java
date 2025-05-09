@@ -27,6 +27,16 @@ public class DuoPlayer extends AppCompatActivity {
     ImageView dice1;
     ImageView dice2;
     Button rollBtn;
+    int points1 = 0;
+    int points2 = 0;
+    int startingPoint = 0;
+    int rolls = 0;
+    TextView player1;
+    TextView player2;
+
+    //make 2 die objects to more easily look at the side the animated die land on
+    Die d1 = new Die();
+    Die d2 = new Die();
 
     MediaPlayer diceSFX;
     MediaPlayer oink;
@@ -46,8 +56,10 @@ public class DuoPlayer extends AppCompatActivity {
             return insets;
         });
 
+
         diceSFX = MediaPlayer.create(this, R.raw.dice_sfx);
         oink = MediaPlayer.create(this, R.raw.pig_sfx);
+
 
         //Attempt at Making Workable Slide-Line.
         //slideBar = findViewById(R.id.slideBox);
@@ -63,14 +75,19 @@ public class DuoPlayer extends AppCompatActivity {
                     Animation slideRight = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_right);
                     slideBar.startAnimation(slideRight);
                     playerTurn = 2;
+                    rolls = 0;
                 }
                 else {
                     Animation slideLeft = AnimationUtils.loadAnimation(DuoPlayer.this, R.anim.slide_left);
                     slideBar.startAnimation(slideLeft);
                     playerTurn = 1;
+                    rolls = 0;
                 }
             }
         });
+
+        player1 = findViewById(R.id.textPlayer1Score);
+        player2 = findViewById(R.id.textPlayer2Score);
 
         dice1 = findViewById(R.id.die1);
         dice2 = findViewById(R.id.die2);
@@ -87,6 +104,19 @@ public class DuoPlayer extends AppCompatActivity {
                 rollDice();
                 rollBtn.setEnabled(true);
                 endButton.setEnabled(true);
+
+                if(points1 >= 100 || points2 >= 100)
+                {
+                    if (playerTurn == 1)
+                    {
+                        Toast.makeText(DuoPlayer.this, "Player 1 WON!", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(DuoPlayer.this, "Player 2 WON!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
         });
 
@@ -106,11 +136,24 @@ public class DuoPlayer extends AppCompatActivity {
             slideBar.startAnimation(slideLeft);
             playerTurn = 1;
         }
+        rolls = 0;
     }
 
     @SuppressLint("SetTextI18n")
     public void rollDice()
     {
+        if(rolls == 0)
+        {
+            System.out.println("Roll check" + rolls);
+            rolls = 1000;
+            if(playerTurn == 1)
+            {
+                startingPoint = points1;
+                System.out.println(startingPoint);
+            }
+            else
+                startingPoint = points2;
+        }
         Random rn = new Random();
         for (int i = 0; i < 15; i++) {
             final Handler handler = new Handler();
@@ -122,21 +165,87 @@ public class DuoPlayer extends AppCompatActivity {
                     //dice1.setText("" + (rn.nextInt(6) + 1));
                     //dice2.setText("" + (rn.nextInt(6) + 1));
                     //done
+
                     d1.setSide(rn.nextInt(6) + 1);
                     d2.setSide(rn.nextInt(6) + 1);
 
                     dice1.setImageResource(getDieImage(d1.getSide()));
                     dice2.setImageResource(getDieImage(d2.getSide()));
+
+
+                    //store the player's score before adding
+
+
+                    //change image of the dice
+                    d1.setSide(rn.nextInt(6) + 1);
+                    d2.setSide(rn.nextInt(6) + 1);
+                    dice1.setImageResource(getDieImage(d1.getSide()));
+                    dice2.setImageResource(getDieImage(d2.getSide()));
+
+                    //make it so that buttons cannot be pressed during a roll
+
                     rollBtn.setEnabled(false);
                     endButton.setEnabled(false);
                     if(finalI == 14)
                     {
                         if(d1.getSide() == 1|| d2.getSide() == 1)
                         {
-                            endTurn();
+
+     
+
+                            if(d1.getSide() == 1 && d2.getSide() == 1)
+                            {
+
+                                if(playerTurn == 1)
+                                {
+                                    points1 = 0;
+                                    player1.setText("Score: " + points1);
+                                    startingPoint = 0;
+                                }
+                                else
+                                {
+                                    points2 = 0;
+                                    player2.setText("Score: " + points2);
+                                    startingPoint= 0;
+                                }
+                                endTurn();
+                                rolls = 0;
+                            }
+                            else
+                            {
+
+                                if(playerTurn == 1)
+                                {
+                                    player1.setText("Score: " + startingPoint);
+                                    points1= startingPoint;
+                                }
+                                else
+                                {
+                                    player2.setText("Score: " + startingPoint);
+                                    points2 = startingPoint;
+                                }
+                                endTurn();
+                                rolls = 0;
+                            }
+
+                        }
+                        else
+                        {
+                            if(playerTurn == 1)
+                            {
+                                points1+= d1.getSide() + d2.getSide();
+                                player1.setText("Score: " + points1);
+                            }
+                            else
+                            {
+                                points2+= d1.getSide() + d2.getSide();
+                                player2.setText("Score: " + points2);
+                            }
+                            System.out.println(startingPoint);
                         }
                         rollBtn.setEnabled(true);
                         endButton.setEnabled(true);
+
                     }
                 }
             }, 50 * (2 * i + 1));

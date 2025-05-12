@@ -142,17 +142,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/scoreTotal"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textColor="#854f4a"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:text="Total: ___"
-        tools:ignore="HardcodedText"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"

@@ -1,6 +1,7 @@
 package com.example.piggame1;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -102,17 +103,7 @@ public class DuoPlayer extends AppCompatActivity {
                 rollBtn.setEnabled(true);
                 endButton.setEnabled(true);
 
-                if(points1 >= 100 || points2 >= 100)
-                {
-                    if (playerTurn == 1)
-                    {
-                        Toast.makeText(DuoPlayer.this, "Player 1 WON!", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
-                        Toast.makeText(DuoPlayer.this, "Player 2 WON!", Toast.LENGTH_SHORT).show();
-                    }
-                }
+
 
             }
         });
@@ -239,6 +230,13 @@ public class DuoPlayer extends AppCompatActivity {
                                 player2.setText("Score: " + points2);
                             }
                             System.out.println(startingPoint);
+                            if(points1 >= 1 || points2 >= 100)
+                            {
+                                Intent intent = new Intent(DuoPlayer.this, SplashScreen.class);
+                                //^ Draws a connection from one page to another.
+                                startActivity(intent);
+                            }
+
                         }
                         rollBtn.setEnabled(true);
                         endButton.setEnabled(true);
